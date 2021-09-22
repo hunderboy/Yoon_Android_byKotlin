@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions' // 코틀린 익스텐션 플러그인 적용. findViewById()는 이제 그만!
 }
 
 android {

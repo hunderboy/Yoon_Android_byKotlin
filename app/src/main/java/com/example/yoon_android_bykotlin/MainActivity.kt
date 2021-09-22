@@ -7,12 +7,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-
 class MainActivity : AppCompatActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//    }
 
 
     val permission_list = arrayOf(
@@ -33,13 +28,13 @@ class MainActivity : AppCompatActivity() {
 
         textView.text = ""
 
-        for(permission in permission_list){
+        for (permission in permission_list) {
             // 권한 허용 여부를 확인한다.
             val chk = checkCallingOrSelfPermission(permission)
 
-            if(chk == PackageManager.PERMISSION_GRANTED) {
+            if (chk == PackageManager.PERMISSION_GRANTED) {
                 textView.append("$permission : 허용\n")
-            } else if(chk == PackageManager.PERMISSION_DENIED){
+            } else if (chk == PackageManager.PERMISSION_DENIED) {
                 textView.append("$permission : 거부\n")
             }
         }
@@ -50,15 +45,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         textView.text = ""
 
-        for(idx in grantResults.indices){
-            if(grantResults[idx] == PackageManager.PERMISSION_GRANTED){
+        for (idx in grantResults.indices) {
+            if (grantResults[idx] == PackageManager.PERMISSION_GRANTED) {
                 textView.append("${permissions[idx]} : 허용\n")
-            } else if(grantResults[idx] == PackageManager.PERMISSION_DENIED){
+            } else if (grantResults[idx] == PackageManager.PERMISSION_DENIED) {
                 textView.append("${permissions[idx]} : 거부\n")
             }
         }
